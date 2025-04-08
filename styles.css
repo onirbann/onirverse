@@ -1,0 +1,51 @@
+/* styles.css */
+
+/* Smooth fade-in animations for section switching */
+.section {
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .hidden {
+    display: none !important;
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  
+  .fade-in {
+    animation: fadeInUp 0.3s ease-out both;
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Sidebar toggle button */
+  #toggleSidebar {
+    transition: transform 0.2s ease;
+  }
+  #toggleSidebar:hover {
+    transform: rotate(-180deg);
+  }
+  
+  /* Modal support */
+  .modal-open {
+    overflow: hidden;
+  }
+
+  
+  .sidebar {
+    transition: width 0.3s ease;
+  }
+  .sidebar-text {
+    transition: opacity 0.3s ease;
+  }
+  

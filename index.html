@@ -1,0 +1,39 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Time & Material Billing</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.28/jspdf.plugin.autotable.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="bg-gray-100 font-sans">
+  <div class="flex h-screen overflow-hidden">
+    <div id="sidebar"></div>
+    <div class="flex-1 overflow-auto">
+      <div id="header"></div>
+      <main class="p-6">
+        <div id="main-sections"></div>
+      </main>
+    </div>
+  </div>
+
+  <div id="modals"></div>
+
+  <!-- Load HTML Partials -->
+  <script>
+    Promise.all([
+      fetch('components/sidebar.html').then(res => res.text()).then(html => document.getElementById('sidebar').innerHTML = html),
+      fetch('components/header.html').then(res => res.text()).then(html => document.getElementById('header').innerHTML = html),
+      fetch('components/sections.html').then(res => res.text()).then(html => document.getElementById('main-sections').innerHTML = html),
+      fetch('components/modals.html').then(res => res.text()).then(html => document.getElementById('modals').innerHTML = html)
+    ]).then(() => {
+      import('./app.js');
+    });
+  </script>
+</body>
+</html>
