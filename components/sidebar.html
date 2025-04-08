@@ -1,0 +1,43 @@
+<!-- components/sidebar.html -->
+<div class="sidebar bg-blue-800 text-white flex flex-col h-full w-64">
+    <div class="p-4 flex items-center justify-between border-b border-blue-700">
+      <div class="flex items-center">
+        <i class="fas fa-clock text-xl mr-3"></i>
+        <span class="sidebar-text font-bold text-lg">Time & Material</span>
+      </div>
+      <button id="toggleSidebar" class="text-white focus:outline-none">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+    </div>
+    <div class="flex-1 overflow-y-auto">
+      <nav class="mt-4">
+        <div class="px-4 py-2 text-sm text-blue-200 uppercase tracking-wider sidebar-text">
+          Main
+        </div>
+        <a href="#" class="nav-item flex items-center px-4 py-3 text-white hover:bg-blue-700 transition" onclick="showSection('projects')">
+          <i class="fas fa-project-diagram mr-3"></i>
+          <span class="sidebar-text">Projects</span>
+        </a>
+        <a href="#" class="nav-item flex items-center px-4 py-3 text-white hover:bg-blue-700 transition" onclick="showSection('create-project')">
+          <i class="fas fa-plus-circle mr-3"></i>
+          <span class="sidebar-text">Create Project</span>
+        </a>
+        <div class="px-4 py-2 text-sm text-blue-200 uppercase tracking-wider sidebar-text">
+          Admin
+        </div>
+        <a href="#" class="nav-item flex items-center px-4 py-3 text-white hover:bg-blue-700 transition" onclick="showSection('roles')">
+          <i class="fas fa-user-tag mr-3"></i>
+          <span class="sidebar-text">Roles</span>
+        </a>
+        <a href="#" class="nav-item flex items-center px-4 py-3 text-white hover:bg-blue-700 transition" onclick="showSection('grades')">
+          <i class="fas fa-star mr-3"></i>
+          <span class="sidebar-text">Grades</span>
+        </a>
+        <a href="#" class="nav-item flex items-center px-4 py-3 text-white hover:bg-blue-700 transition" onclick="showSection('mapping')">
+          <i class="fas fa-link mr-3"></i>
+          <span class="sidebar-text">Role-Grade Mapping</span>
+        </a>
+      </nav>
+    </div>
+  </div>
+  

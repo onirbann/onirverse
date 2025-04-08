@@ -1,0 +1,151 @@
+<!-- components/sections.html -->
+<!-- Projects List Section -->
+<div id="projects" class="section fade-in">
+    <div class="bg-white rounded-lg shadow overflow-hidden">
+      <div class="px-6 py-4 border-b border-gray-200">
+        <h2 class="text-lg font-medium text-gray-900">Projects List</h2>
+      </div>
+      <div class="overflow-x-auto">
+        <table class="min-w-full divide-y divide-gray-200">
+          <thead class="bg-gray-50">
+            <tr>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Project Name</th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date</th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Total Value</th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="projectsTableBody" class="bg-white divide-y divide-gray-200">
+            <!-- Projects will be loaded here -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Create Project Section -->
+  <div id="create-project" class="section hidden fade-in">
+    <div class="bg-white rounded-lg shadow overflow-hidden">
+      <div class="px-6 py-4 border-b border-gray-200">
+        <h2 class="text-lg font-medium text-gray-900">Create New Project</h2>
+      </div>
+      <div class="p-6">
+        <form id="projectForm">
+          <div class="grid grid-cols-1 gap-6">
+            <div>
+              <label for="projectName" class="block text-sm font-medium text-gray-700">Project Name *</label>
+              <input type="text" id="projectName" name="projectName" required class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500">
+            </div>
+            <div>
+              <label for="projectNotes" class="block text-sm font-medium text-gray-700">Notes</label>
+              <textarea id="projectNotes" name="projectNotes" rows="3" class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500"></textarea>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700">Roles</label>
+              <div id="rolesContainer" class="mt-2 space-y-4">
+                <!-- Role selection rows will be added here -->
+              </div>
+              <button type="button" id="addRoleBtn" class="mt-2 inline-flex items-center px-3 py-1 text-sm font-medium text-blue-700 bg-blue-100 hover:bg-blue-200 rounded-md">
+                <i class="fas fa-plus mr-1"></i> Add Role
+              </button>
+            </div>
+            <div class="flex justify-end">
+              <button type="button" onclick="showSection('projects')" class="mr-3 px-4 py-2 border border-gray-300 text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 rounded-md">
+                Cancel
+              </button>
+              <button type="submit" class="px-4 py-2 text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 rounded-md">
+                Save Project
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Project Summary Section -->
+  <div id="project-summary" class="section hidden fade-in">
+    <div class="bg-white rounded-lg shadow overflow-hidden">
+      <div class="px-6 py-4 border-b border-gray-200 flex justify-between items-center">
+        <h2 class="text-lg font-medium text-gray-900" id="summaryProjectName">Project Summary</h2>
+        <div>
+          <button id="exportPdfBtn" class="px-3 py-1 text-sm font-medium text-white bg-green-600 hover:bg-green-700 rounded-md">
+            <i class="fas fa-file-pdf mr-1"></i> Export to PDF
+          </button>
+          <button onclick="showSection('projects')" class="ml-2 px-3 py-1 text-sm font-medium text-gray-700 bg-white border border-gray-300 hover:bg-gray-50 rounded-md">
+            <i class="fas fa-arrow-left mr-1"></i> Back
+          </button>
+        </div>
+      </div>
+      <div class="p-6">
+        <div class="mb-6">
+          <p class="text-sm text-gray-500" id="summaryProjectDate"></p>
+          <p class="mt-1 text-gray-700" id="summaryProjectNotes"></p>
+        </div>
+        <div class="overflow-x-auto">
+          <table class="min-w-full divide-y divide-gray-200">
+            <thead class="bg-gray-50">
+              <tr>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Role Description</th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Grade ID</th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Grade Description</th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Rate</th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Hours</th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Total</th>
+              </tr>
+            </thead>
+            <tbody id="summaryTableBody" class="bg-white divide-y divide-gray-200">
+              <!-- Summary rows -->
+            </tbody>
+            <tfoot class="bg-gray-50">
+              <tr>
+                <td colspan="5" class="px-6 py-3 text-right text-sm font-medium text-gray-500">Total Project Value</td>
+                <td id="summaryTotalValue" class="px-6 py-3 text-left text-sm font-medium text-gray-900"></td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Roles Management Section -->
+<div id="roles" class="section hidden fade-in">
+    <h2 class="text-lg font-medium text-gray-900">Roles</h2>
+    <div class="mt-4 bg-white shadow rounded-lg overflow-hidden">
+      <div class="flex justify-between items-center px-6 py-4 border-b border-gray-200">
+        <h3 class="text-md font-semibold text-gray-700">All Roles</h3>
+        <button onclick="openModal('addRoleModal')" class="bg-blue-600 text-white px-3 py-1 rounded text-sm hover:bg-blue-700">
+          + Add Role
+        </button>
+      </div>
+      <div class="overflow-x-auto">
+        <table class="min-w-full divide-y divide-gray-200">
+          <thead class="bg-gray-50">
+            <tr>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Role ID</th>
+              <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">Description</th>
+              <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="rolesTableBody" class="bg-white divide-y divide-gray-100">
+            <!-- roles will load here -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+    
+  </div>
+  
+  <!-- Grades Management Section -->
+  <div id="grades" class="section hidden fade-in">
+    <h2 class="text-lg font-medium text-gray-900">Grades</h2>
+    <p class="p-4 text-gray-600">This is the Grades section. UI and functionality will go here.</p>
+  </div>
+  
+  <!-- Role-Grade Mapping Section -->
+  <div id="mapping" class="section hidden fade-in">
+    <h2 class="text-lg font-medium text-gray-900">Role-Grade Mapping</h2>
+    <p class="p-4 text-gray-600">This is the Mapping section. UI and functionality will go here.</p>
+  </div>
+  
